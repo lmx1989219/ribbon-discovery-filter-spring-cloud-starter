@@ -27,7 +27,7 @@ import java.util.Set;
  * A default implementation of {@link NacosServer} that matches the instance against the attributes
  * registered through
  *
- * @author Jakub Narloch
+ * @author Jakub Narloch,lmx.2009@qq.com
  * @see DiscoveryEnabledPredicate
  */
 public class MetadataAwarePredicate extends DiscoveryEnabledPredicate {

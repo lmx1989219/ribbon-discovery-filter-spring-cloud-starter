@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
  * A template method predicate to be applied to service discovered server instances. The concreate implementation of
  * this class need to implement the {@link #apply(NacosServer)} method.
  *
- * @author Jakub Narloch
+ * @author Jakub Narloch,lmx.2009@qq.com
  */
 public abstract class DiscoveryEnabledPredicate extends AbstractServerPredicate {
 

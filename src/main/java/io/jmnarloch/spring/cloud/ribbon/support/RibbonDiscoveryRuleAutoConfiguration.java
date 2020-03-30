@@ -31,7 +31,7 @@ import org.springframework.context.annotation.Scope;
 /**
  * The Ribbon discovery filter auto configuration.
  *
- * @author Jakub Narloch
+ * @author Jakub Narloch,lmx.2009@qq.com
  */
 @Configuration
 @ConditionalOnClass(NacosServerList.class)
