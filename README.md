@@ -8,7 +8,7 @@
 ## Features
 
 Allows to specify the criteria based on which the Ribbon load balanced servers lists will be chosen during runtime.
-It will affect the list of servers provided for instance through Eureka and allow to filter them based on presence of
+It will affect the list of servers provided for instance through Alibaba Nacos and allow to filter them based on presence of
 specific settings.
 
 ## Setup
@@ -42,11 +42,7 @@ or `recommendations-v1.1` etc. This is going to work, but does not provide a ver
 approach would be to facilitate the metadata associated with your discovery service and add logic for filtering the services.
 
 ```
-eureka:
-  instance:
-    metadataMap:
-      version: 1.1
-      variant: A
+spring.cloud.nacos.discovery.metadata.launcher=A
 ```
 
 To route the Ribbon request towards services with specific `metadataMap` entries you need to populate the thread bound
@@ -55,8 +51,7 @@ To route the Ribbon request towards services with specific `metadataMap` entries
 ```java
 
 RibbonFilterContextHolder.getCurrentContext()
-                .add("version", "1.1")
-                .add("variant", "A");
+                .add("launcher", "A");
 
 ```
 
@@ -68,7 +63,7 @@ You may also provide your own custom logic, the only requirement is to implement
 
 ## Limitations
 
-Due to lack of proper abstraction in Spring Cloud, this extension is targeting only Netflix Eureka, it's not going to
+Due to lack of proper abstraction in Spring Cloud, this extension is targeting only Alibaba Nacos, it's not going to
 work if you will use Consul or Zookeeper as your Spring Cloud enabled discovery services.
 
 ## Properties
