@@ -1,12 +1,12 @@
 /**
  * Copyright (c) 2015 the original author or authors
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * <p>
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -15,15 +15,15 @@
  */
 package io.jmnarloch.spring.cloud.ribbon.predicate;
 
+import com.alibaba.cloud.nacos.ribbon.NacosServer;
 import com.netflix.loadbalancer.AbstractServerPredicate;
 import com.netflix.loadbalancer.PredicateKey;
-import com.netflix.niws.loadbalancer.DiscoveryEnabledServer;
 
 import javax.annotation.Nullable;
 
 /**
  * A template method predicate to be applied to service discovered server instances. The concreate implementation of
- * this class need to implement the {@link #apply(DiscoveryEnabledServer)} method.
+ * this class need to implement the {@link #apply(NacosServer)} method.
  *
  * @author Jakub Narloch
  */
@@ -35,15 +35,15 @@ public abstract class DiscoveryEnabledPredicate extends AbstractServerPredicate 
     @Override
     public boolean apply(@Nullable PredicateKey input) {
         return input != null
-                && input.getServer() instanceof DiscoveryEnabledServer
-                && apply((DiscoveryEnabledServer) input.getServer());
+                && input.getServer() instanceof NacosServer
+                && apply((NacosServer) input.getServer());
     }
 
     /**
-     * Returns whether the specific {@link DiscoveryEnabledServer} matches this predicate.
+     * Returns whether the specific {@link NacosServer} matches this predicate.
      *
      * @param server the discovered server
      * @return whether the server matches the predicate
      */
-    protected abstract boolean apply(DiscoveryEnabledServer server);
+    protected abstract boolean apply(NacosServer server);
 }
